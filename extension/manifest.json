@@ -1,18 +1,14 @@
 {
 	"manifest_version": 2,
-	
-	"name": "URL Rewrite",
-	"description": "An extension that lets you redirect Chrome for specific URLs",
+	"name": "Opentag S3 Rewrite",
+	"description": "An extension that will rewrite Opentag Cloudfront URLs to S3",
 	"version": "1.0",
-
-	"options_page": "options.html",
-
 	"permissions": [
-		"webNavigation"
+		"webRequest",
+		"webRequestBlocking",
+		"*://d3c3cq33003psk.cloudfront.net/*"
 	],
-
 	"background": {
 		"scripts": ["background.js"]
 	}
-
 }

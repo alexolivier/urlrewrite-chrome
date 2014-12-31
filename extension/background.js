@@ -1,20 +1,14 @@
 (function() {
 	'use strict';
-
-	chrome.webNavigation.onBeforeNavigate.addListener(function(details) {
-		var mappingKey = 'nl.sjmulder.urlrewrite.mappings';
-		var mappings = JSON.parse(localStorage[mappingKey] || '[]');
-
-		for (var i = 0; i < mappings.length; i++) {
-			var mapping = mappings[i];
-			if (details.url.indexOf(mapping.sourceUrl) == 0) {
-				var newUrl = mapping.destinationUrl + details.url.slice(mapping.sourceUrl.length);
-				// console.log('rewriting', details.url, 'to', newUrl);
-				
-				chrome.tabs.update(details.tabId, { url: newUrl })
-				break;
-			}
+	chrome.webRequest.onBeforeRequest.addListener(function(details) {
+		if (details.url.indexOf('debug') > -1) {
+			return;
 		}
-	});
-
+		return {
+			redirectUrl: details.url.replace("//d3c3cq33003psk.cloudfront.net/", "//opentag.s3.amazonaws.com/")
+		};
+	}, {
+		urls: ['*://d3c3cq33003psk.cloudfront.net/*'],
+		types: ['script']
+	}, ["blocking"]);
 })();
