@@ -1,12 +1,13 @@
 {
 	"manifest_version": 2,
-	"name": "Opentag S3 Rewrite",
-	"description": "An extension that will rewrite Opentag Cloudfront URLs to S3",
-	"version": "1.0",
+	"name": "Qubit S3 Rewrite",
+	"description": "An extension that will rewrite Opentag and Smartserve Cloudfront URLs to S3",
+	"version": "2.0",
 	"permissions": [
 		"webRequest",
 		"webRequestBlocking",
-		"*://d3c3cq33003psk.cloudfront.net/*"
+		"*://d3c3cq33003psk.cloudfront.net/*",
+		"*://dd6zx4ibq538k.cloudfront.net/*"
 	],
 	"background": {
 		"scripts": ["background.js"]
